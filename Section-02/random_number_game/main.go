@@ -8,7 +8,7 @@ import (
 
 func main() {
 	// define our game parameters
-	var attempts int = 0  // Number of tries attempted
+	// var attempts int = 0  // Number of tries attempted
 	var tries int = 5     // amount of tries before Game Over
 	var maxGuess int = 10 // number the user has to guess
 	var guesses []int     // array of wrong answers tried
@@ -19,27 +19,27 @@ func main() {
 	initGame(tries, target)
 
 	// Loop repeatedly until tries reaches 0
-	for guess := 0; attempts < tries; {
+	for guess := 0; len(guesses) < tries; {
 		// guess = rand.Intn(target + 1) // logic is currently backwords to simulate a user guessing
 		fmt.Printf("Enter Your Guess (number can be between 1 and %d): ", maxGuess)
 		fmt.Scanln(&guess)
-		attempts++ // increment number of attempts counter
+		// attempts++ // increment number of attempts counter
 
 		if checkNum(guess, target) {
 			guesses = append(guesses, guess) // add final guess to array
 
 			// Game Over - Victory
-			gameOver(true, guesses, attempts)
+			gameOver(true, guesses)
 
 			return
 		} else {
 			fmt.Println("\nIncorrect answer! Please try again")
-			fmt.Printf("Number of tries left: %d\n\n", tries-attempts)
+			fmt.Printf("Number of tries left: %d\n\n", tries-len(guesses))
 			guesses = append(guesses, guess)
 		}
 	}
 	// Game Over - Defeat
-	gameOver(false, guesses, attempts)
+	gameOver(false, guesses)
 
 }
 
@@ -51,7 +51,7 @@ func checkNum(guess int, target int) bool {
 	}
 }
 
-func gameOver(win bool, guesses []int, attempts int) {
+func gameOver(win bool, guesses []int) {
 	fmt.Println()
 	if win {
 		fmt.Println("You Win!")
@@ -59,7 +59,7 @@ func gameOver(win bool, guesses []int, attempts int) {
 		fmt.Println("GAME OVER!!!")
 	}
 	fmt.Printf("Guesses: %d\n", guesses)
-	fmt.Printf("Number of Attempts: %d\n", attempts)
+	fmt.Printf("Number of Attempts: %d\n", len(guesses))
 }
 
 func initGame(tries int, target int) {
