@@ -8,15 +8,15 @@ import (
 
 func main() {
 	// define our game parameters
-	var attempts int = 1 // Number of tries attempted
-	var tries int = 5    // amount of tries before Game Over
-	var target int = 10  // number the user has to guess
-	var guesses []int    // array of wrong answers tried
+	var attempts int = 1  // Number of tries attempted
+	var tries int = 5     // amount of tries before Game Over
+	var maxGuess int = 10 // number the user has to guess
+	var guesses []int     // array of wrong answers tried
 
-	initGame(tries, target)
-
-	// Seed random using unix nanosecond timestamp
+	// Seed random using unix nanosecond timestamp and initialize game
 	rand.Seed(time.Now().UnixNano())
+	target := rand.Intn(maxGuess + 1)
+	initGame(tries, target)
 
 	// Loop repeatedly until tries reaches 0
 	for guess := 0; attempts < tries; {
