@@ -27,7 +27,7 @@ func main() {
 			guesses = append(guesses, guess) // add final guess to array
 
 			// Game Over - Victory
-			gameOver(true, guesses)
+			gameOver(true, guesses, target)
 
 			return
 		} else {
@@ -37,7 +37,7 @@ func main() {
 		}
 	}
 	// Game Over - Defeat
-	gameOver(false, guesses)
+	gameOver(false, guesses, target)
 
 }
 
@@ -49,19 +49,19 @@ func checkNum(guess int, target int) bool {
 	}
 }
 
-func gameOver(win bool, guesses []int) {
-	fmt.Println()
+func gameOver(win bool, guesses []int, target int) {
 	if win {
-		fmt.Printf("Guesses: %d\n", guesses)
-		fmt.Printf("Number of Attempts: %d\n", len(guesses))
-		fmt.Println("You Win!")
+		fmt.Printf("\nYou Win!")
 
 		if len(guesses) == 1 {
-			fmt.Println("Guessed on first try! What a BEAST!\n")
+			fmt.Printf("\nGuessed on first try! What a BEAST!\n")
 		}
 	} else {
 		fmt.Println("GAME OVER!!!")
 	}
+	fmt.Printf("\nGuesses: %d\n", guesses)
+	fmt.Printf("Target was: %d\n", target)
+	fmt.Printf("Number of Attempts: %d\n", len(guesses))
 }
 
 func initGame(tries int, target int) {
