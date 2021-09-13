@@ -7,17 +7,19 @@ import (
 )
 
 func main() {
-	guess := 10
+	target := 10
 	var count int
-	rand.Seed(time.Now().Unix())
+	// u_time := time.Now().UnixNano()
+	rand.Seed(time.Now().UnixNano())
 
-	for n := 0; n != guess; {
-		n = rand.Intn(guess + 1)
-		if n == guess {
-			fmt.Printf("Guess: %d\nTarget: %d\nGuess is correct!\n", guess, n)
+	fmt.Printf("Target: %d\nGuesses: ", target)
+	for n := 0; n != target; {
+		n = rand.Intn(target + 1)
+		if n == target {
+			fmt.Printf("\nGuess is correct!\n")
 			fmt.Printf("Answer took %d tries\n", count+1)
 		} else {
-			fmt.Printf("Guess: %d\nTarget: %d\nWrong answer... Try again\n", guess, n)
+			fmt.Printf("%d ", n)
 			count++
 		}
 	}
