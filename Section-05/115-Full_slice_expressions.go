@@ -17,11 +17,13 @@ func main() {
 	s.Show("odds: ", odds)
 	s.Show("evens: ", evens)
 
-	newNums := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-	mid := len(newNums) / 2
+	// newNums := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+	newNums := []int{0, 1, 2, 3, 4}
+	// mid := len(newNums) / 2
 
-	// midNums := append(newNums[mid-1 : mid+1])
-	midNums := newNums[mid-1 : mid+1]
+	// midNums := newNums[1:3]
+	midNums := append(newNums[1:3], 3, 4)
+	// midNums := newNums[mid-1 : mid+1]
 
 	s.Show("newNums: ", newNums)
 	s.Show("midNums: ", midNums)
