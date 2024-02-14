@@ -110,7 +110,7 @@ func main() {
 	// #6: Slice the `clone` slice between 2nd and 4th (inclusive)
 	//     elements into a new slice: `sliced`.
 	//
-	sliced := clone[2:4]
+	sliced := clone[1:4:4]
 	//     Append "hypatia" to the `sliced`.
 	sliced = append(sliced, "hypatia")
 	//     Ensure that new backing array allocation "occurs".
